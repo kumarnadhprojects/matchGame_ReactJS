@@ -1,0 +1,39 @@
+* {
+  color: antiquewhite;
+}
+
+.title-score-container {
+  background-color: #2c0e3a;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.navbar-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.website-logo {
+  width: 150px;
+  margin: 10px;
+}
+
+.scores-container {
+  display: flex;
+  align-items: center;
+}
+
+.score {
+  margin-right: 30px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.timer {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}

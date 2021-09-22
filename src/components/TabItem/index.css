@@ -1,0 +1,21 @@
+.each-tab {
+  padding: 15px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tab-button {
+  font-size: 16px;
+  padding-left: 26px;
+  padding-right: 26px;
+  border: none;
+  background-color: transparent;
+  padding-bottom: 8px;
+  color: #fff;
+}
+
+.active {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+  padding-bottom: 8px;
+}
