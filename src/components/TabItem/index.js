@@ -1,22 +1,21 @@
 import './index.css'
 
 const TabItem = props => {
-  const {tabData, clickTabItem, isActive} = props
-  const {displayText, tabId} = tabData
+  const {tabDetails, active, onClick} = props
 
   const onClickTabItem = () => {
-    clickTabItem(tabId)
+    onClick(tabDetails.tabId)
   }
-
-  const btnClassName = isActive ? 'tab-button active' : 'tab-button'
-
   return (
-    <li className="each-tab">
-      <button type="button" onClick={onClickTabItem} className={btnClassName}>
-        {displayText}
+    <li className="tab-item">
+      <button
+        className={`tab-item-button ${active ? 'active-tab' : ''}`}
+        type="button"
+        onClick={onClickTabItem}
+      >
+        {tabDetails.displayText}
       </button>
     </li>
   )
 }
-
 export default TabItem

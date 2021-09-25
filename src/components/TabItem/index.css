@@ -1,21 +1,16 @@
-.each-tab {
-  padding: 15px;
-  text-decoration: underline;
+.tab-item {
+  padding: 10px;
+  background-color: transparent;
+}
+.tab-item-button {
+  color: #fff;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
   cursor: pointer;
 }
-
-.tab-button {
-  font-size: 16px;
-  padding-left: 26px;
-  padding-right: 26px;
-  border: none;
-  background-color: transparent;
-  padding-bottom: 8px;
-  color: #fff;
-}
-
-.active {
-  color: #2563eb;
-  border-bottom: 2px solid #2563eb;
-  padding-bottom: 8px;
+.active-tab {
+  color: #fec653;
+  border-bottom: 3px solid #fec653;
 }

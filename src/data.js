@@ -1,16 +1,11 @@
-import {Component} from 'react'
-import './index.css'
-import AppItem from '../AppItem'
-import TabItem from '../TabItem'
-import NavBar from '../Navbar'
-import ScorecardView from '../ScorecardView'
-
-const tabsList = [
+// These are the lists used in the application. You can move them to any component needed.
+export const tabsList = [
   {tabId: 'FRUIT', displayText: 'Fruits'},
   {tabId: 'ANIMAL', displayText: 'Animals'},
   {tabId: 'PLACE', displayText: 'Places'},
 ]
-const imagesList = [
+
+export const imagesList = [
   {
     id: 'b11ec8ce-35c9-4d67-a7f7-07516d0d8186',
     imageUrl:
@@ -250,111 +245,4 @@ const imagesList = [
   },
 ]
 
-class MatchStore extends Component {
-  state = {
-    activeTab: tabsList[0].tabId,
-    activeImage: imagesList[0].imageUrl,
-    GameOver: false,
-    Score: 0,
-    timer: 60,
-  }
-
-  componentDidMount() {
-    this.onStartTimer()
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.uniqueId)
-  }
-
-  clickTabItem = tabId => {
-    this.setState({activeTab: tabId})
-  }
-
-  onClickPlayAgain = () => {
-    this.setState({GameOver: false, Score: 0, timer: 60})
-  }
-
-  clickedFruit = clickedImage => {
-    const {activeImage} = this.state
-    const randomImageId = Math.floor(Math.random() * imagesList.length)
-
-    const randomImage = imagesList[randomImageId].imageUrl
-
-    this.setState({activeImage: randomImage})
-
-    if (activeImage === clickedImage) {
-      this.setState(prevState => ({Score: prevState.Score + 1}))
-    } else {
-      this.setState({GameOver: true})
-    }
-  }
-
-  getActiveTabs = () => {
-    const {activeTab} = this.state
-
-    const filteredRes = imagesList.filter(
-      eachImage => eachImage.category === activeTab,
-    )
-    return filteredRes
-  }
-
-  onStartTimer = () => {
-    this.uniqueId = setInterval(this.onDecrementTimer, 1000)
-  }
-
-  onDecrementTimer = () => {
-    const {timer} = this.state
-
-    if (timer > 0) {
-      this.setState(prevState => ({
-        timer: prevState.timer - 1,
-      }))
-    }
-  }
-
-  render() {
-    const {activeTab, activeImage, Score, GameOver, timer} = this.state
-
-    const filteredResults = this.getActiveTabs()
-
-    return (
-      <div className="bg-container">
-        <NavBar currentScore={Score} isGameOver={GameOver} timer={timer} />
-
-        {timer === 0 || GameOver === true ? (
-          <ScorecardView
-            isWon={GameOver}
-            onClickPlayAgain={this.onClickPlayAgain}
-            score={Score}
-          />
-        ) : (
-          <>
-            <img src={activeImage} alt="match" className="main-image" />
-            <ul className="all-tabs">
-              {tabsList.map(eachTab => (
-                <TabItem
-                  tabData={eachTab}
-                  key={eachTab.tabId}
-                  clickTabItem={this.clickTabItem}
-                  isActive={activeTab === eachTab.tabId}
-                />
-              ))}
-            </ul>
-            <ul className="all-apps">
-              {filteredResults.map(eachApp => (
-                <AppItem
-                  appData={eachApp}
-                  key={eachApp.id}
-                  clickedFruit={this.clickedFruit}
-                />
-              ))}
-            </ul>
-          </>
-        )}
-      </div>
-    )
-  }
-}
-
-export default MatchStore
+export default null
